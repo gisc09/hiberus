@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!--ORM-->
+    <preference for="Hiberus\Sese\Api\Data\ExamManagementInterface" type="Hiberus\Sese\Model\ExamManagement"/>
+    <preference for="Hiberus\Sese\Api\Data\ExamManagementSearchResultsInterface" type="Hiberus\Sese\Model\ExamManagementSearchResults"/>
+    <preference for="Hiberus\Sese\Api\ExamManagementRepositoryInterface" type="Hiberus\Sese\Model\ExamManagementRepository"/>
+
+    <!-- CLI COMMANDS -->
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="hiberus_sese" xsi:type="object">Hiberus\Sese\Console\Command\HiberusSese</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Admin Grid ExamManagement -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="hiberus_sese_exam_listing_data_source" xsi:type="string">HiberusSeseExamManagementCollection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="HiberusSeseExamManagementCollection" type="Hiberus\Sese\Ui\DataProvider\ExamManagement\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">hiberus_exam</argument>
+            <argument name="resourceModel" xsi:type="string">Hiberus\Sese\Model\ResourceModel\ExamManagement</argument>
+        </arguments>
+    </virtualType>
+
+    <!-- plugin change mark -->
+    <type name="Hiberus\Sese\Block\Index">
+        <plugin name="hiberus_sese_plugin_changemark" type="Hiberus\Sese\Plugin\ChangeMark" sortOrder="10" />
+    </type>
+
+</config>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Hiberus_Sese::exam" title="Hiberus" module="Hiberus_Sese" sortOrder="51" resource="Hiberus_Sese::exam"/>
+        <add id="Hiberus_Sese::exam_management" title="Exam Management" module="Hiberus_Sese" sortOrder="10" action="hiberus_sese/exam/index" resource="Hiberus_Sese::exam_management" parent="Hiberus_Sese::exam"/>
+    </menu>
+</config>

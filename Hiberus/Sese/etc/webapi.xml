@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+ ~ @author Interactiv4 Team
+ ~ @copyright Copyright (c) 2017 Interactiv4 (https://www.interactiv4.com)
+ ~ @package Interactiv4_Post
+ -->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route method="GET" url="/V1/hiberus_sese">
+        <service class="Hiberus\Sese\Api\ExamManagementRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="anonymouns"/>
+        </resources>
+    </route>
+    <route method="GET" url="/V1/hiberus_sese">
+        <service class="Hiberus\Sese\Api\ExamManagementRepositoryInterface" method="deleteByID"/>
+        <resources>
+            <resource ref="anonymouns"/>
+        </resources>
+    </route>
+    <route method="GET" url="/V1/hiberus_sese">
+        <service class="Hiberus\Sese\Api\ExamManagementRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="anonymouns"/>
+        </resources>
+    </route>
+</routes>

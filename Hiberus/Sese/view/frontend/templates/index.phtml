@@ -1,0 +1,32 @@
+<?php
+/* @var $block Hiberus\Sese\Block\Index */
+    $studentMarks=$block->getStudentMarks();
+    $bestThreeScoredMarks=$block->getBestThreeScoredMarks();
+?>
+<h2 class="title">Exam Management</h2>
+
+<?php
+    if($studentMarks):
+?>
+        <div id="popup-modal" style="display:none;">
+            <h1><?=__('The best mark is : %1', $block->getBestMark())?> </h1>
+        </div>
+        <div class="best-mark" data-mage-init='{ "alertBestMark": {} }'>
+            <span class="action primary">Show Best Mark</span>
+        </div>
+        <div class="show-student-marks" data-mage-init='{ "showMarks": {} }'>
+            <span class="action primary">Show marks</span>
+        </div>
+        <ul class="table-student-marks">
+            <?php foreach($studentMarks as $studentMark): ?>
+                    <li class="<?= $studentMark->getMark() >= 5  ? 'approved' : 'fail'; ?> <?= $block->isBestScore($studentMark, $bestThreeScoredMarks) ? 'best-score': ''?>">
+                        <span class="student-name"><?=$studentMark->getFirstname()?> <?=$studentMark->getLastname()?> <span class="student-mark"><?=$studentMark->getMark()?></span>
+                    </li>
+            <?php endforeach; ?>
+            <li class="student-average">
+                Average: <span class="student-average-mark"><?=$block->getAverage()?></span>
+            </li>
+        </ul>
+<?php
+    endif;
+?>
